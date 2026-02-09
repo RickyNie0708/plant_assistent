@@ -1,0 +1,371 @@
+/* pages/record/addRecord.wxss */
+.add-record-page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #FAF8F5 0%, #F5F7FA 100%);
+  box-sizing: border-box;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+/* 头部 - 调整padding */
+.page-header {
+  padding: 80rpx 30rpx 40rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  border-bottom: 1rpx solid rgba(0, 0, 0, 0.05);
+  width: 100vw;
+  box-sizing: border-box;
+}
+
+.back-btn {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  background: #f8f9fa;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.back-btn:active {
+  background: #e9ecef;
+  transform: scale(0.9);
+}
+
+.back-btn .icon {
+  font-size: 36rpx;
+  color: #667eea;
+}
+
+.page-title {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #2C3E50;
+}
+
+.save-btn {
+  width: 120rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.save-btn[disabled] {
+  opacity: 0.5;
+  background: #95A5A6;
+}
+
+.save-btn:not([disabled]):active {
+  transform: scale(0.95);
+}
+
+.save-text {
+  color: white;
+  font-size: 26rpx;
+  font-weight: 500;
+}
+
+/* 表单容器 - 调整padding */
+.form-container {
+  height: calc(100vh - 220rpx);
+  padding: 0 30rpx 120rpx;
+  width: 100vw;
+  box-sizing: border-box;
+}
+
+/* 表单区块 - 调整padding */
+.form-section {
+  margin-top: 40rpx;
+  padding: 35rpx 30rpx;
+  background: white;
+  border-radius: 24rpx;
+  box-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.06);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.section-label {
+  display: block;
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #2C3E50;
+  margin-bottom: 30rpx;
+  padding-left: 8rpx;
+  border-left: 6rpx solid #667eea;
+}
+
+/* 时间输入 - 调整gap和padding */
+.time-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16rpx;
+}
+
+.date-picker,
+.time-picker {
+  background: #f8f9fa;
+  border-radius: 16rpx;
+  padding: 28rpx 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.date-picker:active,
+.time-picker:active {
+  background: #e9ecef;
+  transform: scale(0.98);
+}
+
+.date-icon,
+.time-icon {
+  font-size: 36rpx;
+  margin-right: 15rpx;
+}
+
+.date-text,
+.time-text {
+  flex: 1;
+  font-size: 28rpx;
+  color: #2C3E50;
+  min-width: 0;
+}
+
+.placeholder {
+  color: #BDC3C7;
+}
+
+.arrow {
+  font-size: 32rpx;
+  color: #95A5A6;
+  margin-left: 15rpx;
+}
+
+/* 植物输入 - 调整padding */
+.plant-input {
+  background: #f8f9fa;
+  border-radius: 16rpx;
+  padding: 28rpx 24rpx;
+  font-size: 28rpx;
+  color: #2C3E50;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* 养护类型网格 - 调整gap和padding */
+.type-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16rpx;
+}
+
+.type-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25rpx 15rpx;
+  background: #f8f9fa;
+  border-radius: 20rpx;
+  border: 2rpx solid transparent;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.type-item.selected {
+  background: rgba(102, 126, 234, 0.1);
+  border-color: #667eea;
+  transform: translateY(-4rpx);
+  box-shadow: 0 8rpx 24rpx rgba(102, 126, 234, 0.2);
+}
+
+.type-item:active {
+  transform: scale(0.95);
+}
+
+.type-icon {
+  font-size: 44rpx;
+  margin-bottom: 16rpx;
+}
+
+.type-label {
+  font-size: 24rpx;
+  color: #2C3E50;
+  font-weight: 500;
+}
+
+/* 描述输入 - 调整padding */
+.description-input {
+  background: #f8f9fa;
+  border-radius: 16rpx;
+  padding: 28rpx 24rpx;
+  font-size: 28rpx;
+  color: #2C3E50;
+  min-height: 200rpx;
+  line-height: 1.6;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.char-count {
+  text-align: right;
+  margin-top: 16rpx;
+}
+
+.count {
+  font-size: 24rpx;
+  color: #95A5A6;
+}
+
+/* 图片上传 - 调整gap */
+.image-upload {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16rpx;
+}
+
+.image-item {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 16rpx;
+  overflow: hidden;
+  width: 100%;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+}
+
+.remove-btn {
+  position: absolute;
+  top: 8rpx;
+  right: 8rpx;
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.remove-icon {
+  color: white;
+  font-size: 24rpx;
+  font-weight: 700;
+}
+
+.upload-btn {
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #f8f9fa;
+  border-radius: 16rpx;
+  border: 2rpx dashed #BDC3C7;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.upload-btn:active {
+  background: #e9ecef;
+  border-color: #667eea;
+}
+
+.upload-icon {
+  font-size: 44rpx;
+  color: #95A5A6;
+  margin-bottom: 8rpx;
+}
+
+.upload-text {
+  font-size: 22rpx;
+  color: #95A5A6;
+}
+
+.upload-hint {
+  display: block;
+  font-size: 24rpx;
+  color: #95A5A6;
+  margin-top: 16rpx;
+  text-align: center;
+}
+
+/* 位置信息 - 调整padding */
+.location-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.location-info {
+  margin-top: 20rpx;
+  padding: 20rpx;
+  background: rgba(102, 126, 234, 0.1);
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.location-icon {
+  font-size: 32rpx;
+  margin-right: 16rpx;
+}
+
+.location-text {
+  font-size: 26rpx;
+  color: #667eea;
+  flex: 1;
+  min-width: 0;
+}
+
+/* 验证提示 - 调整padding */
+.validation-tip {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 30rpx 30rpx;
+  background: linear-gradient(135deg, #fa709a, #fee140);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: slideUp 0.3s ease;
+  width: 100vw;
+  box-sizing: border-box;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.tip-icon {
+  font-size: 32rpx;
+  margin-right: 16rpx;
+}
+
+.tip-text {
+  font-size: 26rpx;
+  font-weight: 500;
+}

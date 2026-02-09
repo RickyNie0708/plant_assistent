@@ -1,0 +1,105 @@
+<!-- pages/record/detail.wxml -->
+<view class="detail-page">
+  <!-- 头部 -->
+  <view class="page-header">
+    <button class="back-btn" bindtap="goBack">
+      <text class="icon">←</text>
+    </button>
+    <text class="page-title">记录详情</text>
+    <view class="header-actions">
+      <button class="action-btn share" bindtap="shareRecord">
+        <text class="action-icon">↗️</text>
+      </button>
+      <button class="action-btn edit" bindtap="editRecord">
+        <text class="action-icon">✏️</text>
+      </button>
+    </view>
+  </view>
+
+  <!-- 内容区域 -->
+  <scroll-view class="content-container" scroll-y>
+    <!-- 植物信息和时间 -->
+    <view class="info-section">
+      <text class="plant-name">{{record.plantName || '未命名植物'}}</text>
+      
+      <view class="time-info">
+        <text class="date-icon">📅</text>
+        <text class="date">{{record.date || ''}}</text>
+        <text class="time-icon">🕐</text>
+        <text class="time">{{record.time || ''}}</text>
+      </view>
+      
+      <view class="type-tag {{record.type}}">
+        <text class="type-icon">{{getTypeIcon(record.type)}}</text>
+        <text class="type-text">{{getTypeText(record.type)}}</text>
+      </view>
+    </view>
+
+    <!-- 位置信息 -->
+    <view wx:if="{{record.location}}" class="location-section">
+      <text class="section-title">位置记录</text>
+      <view class="location-content">
+        <text class="location-icon">📍</text>
+        <text class="location-text">{{record.location}}</text>
+      </view>
+    </view>
+
+    <!-- 详细描述 -->
+    <view wx:if="{{record.description}}" class="description-section">
+      <text class="section-title">生长故事</text>
+      <view class="description-content">
+        <text class="description-text">{{record.description}}</text>
+      </view>
+    </view>
+
+    <!-- 图片展示 -->
+    <view wx:if="{{record.images && record.images.length}}" class="images-section">
+      <text class="section-title">美好瞬间</text>
+      <view class="images-grid">
+        <block wx:for="{{record.images}}" wx:key="index">
+          <view class="image-item" bindtap="previewImage" data-index="{{index}}">
+            <image class="image" src="{{item}}" mode="aspectFill"></image>
+          </view>
+        </block>
+      </view>
+    </view>
+
+    <!-- 元信息 -->
+    <view class="meta-section">
+      <text class="section-title">记录信息</text>
+      <view class="meta-list">
+        <view class="meta-item">
+          <text class="meta-label">记录时间：</text>
+          <text class="meta-value">{{formatCreateTime(record.createdAt)}}</text>
+        </view>
+        <view class="meta-item">
+          <text class="meta-label">最后更新：</text>
+          <text class="meta-value">{{formatCreateTime(record.updatedAt)}}</text>
+        </view>
+        <view class="meta-item">
+          <text class="meta-label">记录ID：</text>
+          <text class="meta-value id-text">{{record._id || '暂无'}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 操作按钮 -->
+    <view class="action-section">
+      <button class="action-btn large edit-btn" bindtap="editRecord">
+        <text class="btn-icon">✏️</text>
+        <text class="btn-text">编辑记录</text>
+      </button>
+      <button class="action-btn large delete-btn" bindtap="deleteRecord">
+        <text class="btn-icon">🗑️</text>
+        <text class="btn-text">删除记录</text>
+      </button>
+    </view>
+
+    <!-- 空状态 -->
+    <view wx:if="{{!record || !record._id}}" class="empty-state">
+      <text class="empty-icon">📄</text>
+      <text class="empty-text">记录不存在或已被删除</text>
+      <button class="empty-btn" bindtap="goBack">返回列表</button>
+    </view>
+  </scroll-view>
+</view>

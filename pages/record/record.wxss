@@ -1,0 +1,378 @@
+/* pages/record/record.wxss */
+.record-page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #FAF8F5 0%, #F5F7FA 100%);
+}
+
+/* 头部 */
+.page-header {
+  padding: 80rpx 40rpx 40rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  border-bottom: 1rpx solid rgba(0, 0, 0, 0.05);
+}
+
+.back-btn {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  background: #f8f9fa;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.back-btn:active {
+  transform: scale(0.9);
+}
+
+.back-btn .icon {
+  font-size: 36rpx;
+  color: #667eea;
+}
+
+.page-title {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #2C3E50;
+}
+
+.add-btn {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 8rpx 24rpx rgba(102, 126, 234, 0.3);
+}
+
+.add-btn:active {
+  transform: scale(0.9);
+}
+
+.add-icon {
+  font-size: 36rpx;
+  color: white;
+  font-weight: 300;
+}
+
+/* 筛选区域 */
+.filter-section {
+  padding: 30rpx 40rpx;
+  display: flex;
+  gap: 20rpx;
+  background: white;
+  border-bottom: 1rpx solid rgba(0, 0, 0, 0.05);
+}
+
+.search-input {
+  flex: 1;
+  background: #f8f9fa;
+  border-radius: 50rpx;
+  padding: 24rpx 32rpx;
+  font-size: 28rpx;
+  color: #2C3E50;
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  background: #e9ecef;
+}
+
+.filter-picker {
+  min-width: 160rpx;
+  background: #f8f9fa;
+  border-radius: 50rpx;
+  padding: 24rpx 32rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12rpx;
+  transition: all 0.3s ease;
+}
+
+.filter-picker:active {
+  background: #e9ecef;
+}
+
+.filter-text {
+  font-size: 26rpx;
+  color: #2C3E50;
+  font-weight: 500;
+}
+
+.filter-icon {
+  font-size: 20rpx;
+  color: #95A5A6;
+}
+
+/* 记录列表 */
+.record-list {
+  height: calc(100vh - 340rpx);
+  padding: 0 30rpx 30rpx;
+}
+
+/* 空状态 */
+.empty-state {
+  padding: 120rpx 40rpx;
+  text-align: center;
+  background: white;
+  border-radius: 24rpx;
+  margin-top: 30rpx;
+  box-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.06);
+}
+
+.empty-icon {
+  font-size: 100rpx;
+  display: block;
+  margin-bottom: 40rpx;
+  opacity: 0.6;
+}
+
+.empty-title {
+  display: block;
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #2C3E50;
+  margin-bottom: 20rpx;
+}
+
+.empty-tip {
+  display: block;
+  font-size: 28rpx;
+  color: #95A5A6;
+  margin-bottom: 60rpx;
+  line-height: 1.5;
+}
+
+.empty-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 24rpx 48rpx;
+  border-radius: 50rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+  box-shadow: 0 8rpx 32rpx rgba(102, 126, 234, 0.3);
+  transition: all 0.3s ease;
+}
+
+.empty-btn:active {
+  transform: scale(0.95);
+}
+
+/* 记录卡片 */
+.record-card {
+  background: white;
+  border-radius: 24rpx;
+  margin-top: 30rpx;
+  box-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.record-card:active {
+  transform: translateY(-2rpx);
+  box-shadow: 0 12rpx 40rpx rgba(0, 0, 0, 0.1);
+}
+
+/* 卡片内容区域 */
+.card-content {
+  padding: 40rpx 40rpx 30rpx;
+  /* 可点击区域 */
+  cursor: pointer;
+}
+
+/* 记录头部 */
+.record-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24rpx;
+}
+
+.plant-name {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #2C3E50;
+  flex: 1;
+  margin-right: 20rpx;
+  line-height: 1.3;
+}
+
+.type-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 8rpx 20rpx;
+  border-radius: 20rpx;
+  background: rgba(102, 126, 234, 0.1);
+  color: #667eea;
+  flex-shrink: 0;
+}
+
+.type-tag.watering {
+  background: rgba(79, 172, 254, 0.1);
+  color: #4facfe;
+}
+
+.type-tag.fertilizing {
+  background: rgba(67, 233, 123, 0.1);
+  color: #43e97b;
+}
+
+.type-tag.pruning {
+  background: rgba(250, 112, 154, 0.1);
+  color: #fa709a;
+}
+
+.type-tag.weeding {
+  background: rgba(255, 209, 102, 0.1);
+  color: #ffd166;
+}
+
+.type-tag.repotting {
+  background: rgba(147, 112, 219, 0.1);
+  color: #9370DB;
+}
+
+.type-icon {
+  font-size: 24rpx;
+  margin-right: 8rpx;
+}
+
+.type-text {
+  font-size: 24rpx;
+  font-weight: 500;
+}
+
+/* 时间信息 */
+.record-time {
+  display: flex;
+  gap: 30rpx;
+  margin-bottom: 24rpx;
+}
+
+.date, .time {
+  font-size: 26rpx;
+  color: #95A5A6;
+  display: flex;
+  align-items: center;
+}
+
+.date::before {
+  content: '📅';
+  margin-right: 8rpx;
+}
+
+.time::before {
+  content: '🕐';
+  margin-right: 8rpx;
+}
+
+/* 描述 */
+.record-desc {
+  padding: 20rpx 0;
+  margin-bottom: 24rpx;
+}
+
+.desc-text {
+  font-size: 28rpx;
+  color: #34495E;
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 图片预览 */
+.image-preview {
+  position: relative;
+  width: 100%;
+  height: 200rpx;
+  border-radius: 16rpx;
+  overflow: hidden;
+  margin-bottom: 10rpx;
+}
+
+.preview-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-count {
+  position: absolute;
+  bottom: 16rpx;
+  right: 16rpx;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 8rpx 16rpx;
+  border-radius: 20rpx;
+  font-size: 22rpx;
+  font-weight: 500;
+}
+
+/* 操作按钮 */
+.record-actions {
+  display: flex;
+  gap: 1rpx;
+  padding: 0;
+  background: #f8f9fa;
+  border-top: 1rpx solid rgba(0, 0, 0, 0.05);
+}
+
+.action-btn {
+  flex: 1;
+  padding: 28rpx 20rpx;
+  border: none;
+  background: white;
+  font-size: 26rpx;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12rpx;
+  transition: all 0.3s ease;
+  border-radius: 0;
+}
+
+.action-btn:first-child {
+  border-right: 1rpx solid rgba(0, 0, 0, 0.05);
+}
+
+.action-btn.edit {
+  color: #667eea;
+}
+
+.action-btn.edit:active {
+  background: rgba(102, 126, 234, 0.05);
+  color: #5a5fcf;
+}
+
+.action-btn.delete {
+  color: #E74C3C;
+}
+
+.action-btn.delete:active {
+  background: rgba(231, 76, 60, 0.05);
+  color: #c0392b;
+}
+
+.btn-icon {
+  font-size: 28rpx;
+}
+
+.btn-text {
+  font-size: 26rpx;
+  font-weight: 500;
+}

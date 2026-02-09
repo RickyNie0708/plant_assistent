@@ -1,0 +1,154 @@
+<!-- pages/register/register.wxml -->
+<view class="register-page">
+  <!-- 顶部区域 -->
+  <view class="header">
+    <view class="back-btn" bindtap="goBack">
+      <text class="icon">←</text>
+    </view>
+    <text class="page-title">注册账号</text>
+    <text class="page-subtitle">加入我们，记录植物生长</text>
+  </view>
+
+  <!-- 表单区域 -->
+  <view class="form-container">
+    <!-- 用户名 -->
+    <view class="form-item {{nicknameFocus ? 'active' : ''}}">
+      <view class="form-label">
+        <text class="icon">👤</text>
+        <text>用户名</text>
+      </view>
+      <input
+        class="form-input"
+        placeholder="2-10位中文、英文或数字"
+        placeholder-class="placeholder"
+        value="{{nickname}}"
+        bindinput="onNicknameInput"
+        bindfocus="onNicknameFocus"
+        bindblur="onNicknameBlur"
+        maxlength="10"
+      />
+      <view class="input-status">
+        <text wx:if="{{nickname && nickname.length >= 2}}" class="icon success">✓</text>
+        <text wx:if="{{nickname && nickname.length < 2}}" class="icon error">✗</text>
+      </view>
+    </view>
+    <view class="input-tip" wx:if="{{nickname}}">
+      {{nickname.length}}/10 {{nickname.length >= 2 ? '✓' : '✗'}}
+    </view>
+
+    <!-- 密码 -->
+    <view class="form-item {{passwordFocus ? 'active' : ''}}">
+      <view class="form-label">
+        <text class="icon">🔒</text>
+        <text>密码</text>
+      </view>
+      <input
+        class="form-input"
+        type="{{showPassword ? 'text' : 'password'}}"
+        placeholder="至少6位，包含字母和数字"
+        placeholder-class="placeholder"
+        value="{{password}}"
+        bindinput="onPasswordInput"
+        bindfocus="onPasswordFocus"
+        bindblur="onPasswordBlur"
+      />
+      <view class="input-status">
+        <text wx:if="{{password && password.length >= 6}}" class="icon success" bindtap="togglePassword">
+          {{showPassword ? '🙈' : '👁️'}}
+        </text>
+        <text wx:if="{{password && password.length < 6}}" class="icon error" bindtap="togglePassword">
+          {{showPassword ? '🙈' : '👁️'}}
+        </text>
+      </view>
+    </view>
+    
+    <!-- 密码强度 -->
+    <view class="password-strength" wx:if="{{password}}">
+      <view class="strength-indicator">
+        <view class="strength-dot {{passwordStrength >= 1 ? 'active' : ''}}"></view>
+        <view class="strength-dot {{passwordStrength >= 2 ? 'active' : ''}}"></view>
+        <view class="strength-dot {{passwordStrength >= 3 ? 'active' : ''}}"></view>
+      </view>
+      <text class="strength-text">
+        {{passwordStrengthText}}
+      </text>
+    </view>
+
+    <!-- 确认密码 -->
+    <view class="form-item {{confirmPasswordFocus ? 'active' : ''}}">
+      <view class="form-label">
+        <text class="icon">✓</text>
+        <text>确认密码</text>
+      </view>
+      <input
+        class="form-input"
+        type="{{showConfirmPassword ? 'text' : 'password'}}"
+        placeholder="再次输入密码"
+        placeholder-class="placeholder"
+        value="{{confirmPassword}}"
+        bindinput="onConfirmPasswordInput"
+        bindfocus="onConfirmPasswordFocus"
+        bindblur="onConfirmPasswordBlur"
+      />
+      <view class="input-status">
+        <text wx:if="{{password && confirmPassword}}" class="{{passwordMatch ? 'success' : 'error'}}">
+          {{passwordMatch ? '✓' : '✗'}}
+        </text>
+      </view>
+    </view>
+
+    <!-- 协议 -->
+    <view class="agreement-section">
+      <label class="agreement-item" bindtap="toggleAgreement">
+        <view class="agreement-checkbox {{agreed ? 'checked' : ''}}">
+          <text class="icon" wx:if="{{agreed}}">✓</text>
+        </view>
+        <text class="agreement-text">
+          我已阅读并同意
+          <text class="link" bindtap="viewAgreement">《用户协议》</text>
+          和
+          <text class="link" bindtap="viewPrivacy">《隐私政策》</text>
+        </text>
+      </label>
+    </view>
+
+    <!-- 注册按钮 -->
+    <button
+      class="submit-btn {{canSubmit ? 'active' : ''}}"
+      bindtap="onRegister"
+      disabled="{{!canSubmit || loading}}"
+      loading="{{loading}}"
+      hover-class="btn-hover"
+    >
+      {{loading ? '注册中...' : '立即注册'}}
+    </button>
+
+    <!-- 分割线 -->
+    <view class="divider">
+      <view class="divider-line"></view>
+      <text class="divider-text">或</text>
+      <view class="divider-line"></view>
+    </view>
+
+    <!-- 游客体验 -->
+    <button
+      class="guest-btn"
+      bindtap="onGuestRegister"
+      disabled="{{loading}}"
+      hover-class="btn-hover"
+    >
+      🌱 游客体验
+    </button>
+
+    <!-- 已有账号 -->
+    <view class="login-link">
+      <text>已有账号？</text>
+      <text class="link" bindtap="goToLogin">去登录</text>
+    </view>
+  </view>
+
+  <!-- 底部装饰 -->
+  <view class="footer">
+    <text class="footer-text">种下小美好 · 记录每一刻生长</text>
+  </view>
+</view>

@@ -1,0 +1,93 @@
+<!-- pages/calendar/calendar.wxml -->
+<view class="calendar-page">
+  <!-- 自定义导航 -->
+  <view class="custom-nav">
+    <view class="nav-left" bindtap="goBack">
+      <text class="icon">←</text>
+      <text class="nav-title">时光手账</text>
+    </view>
+    <text class="nav-subtitle">记录每一刻的生长</text>
+  </view>
+
+  <!-- 月份导航 -->
+  <view class="month-nav">
+    <button class="nav-btn" bindtap="prevMonth">
+      <text class="icon">‹</text>
+    </button>
+    <view class="month-display">
+      <text class="year">{{currentYear}}年</text>
+      <text class="month">{{currentMonth}}月</text>
+    </view>
+    <button class="nav-btn" bindtap="nextMonth">
+      <text class="icon">›</text>
+    </button>
+  </view>
+
+  <!-- 星期标题 -->
+  <view class="week-header">
+    <text wx:for="{{weekDays}}" wx:key="index" class="week-day">{{item}}</text>
+  </view>
+
+  <!-- 日历网格 -->
+  <view class="calendar-grid">
+    <view 
+      wx:for="{{calendarDays}}" 
+      wx:key="index"
+      class="day-cell {{item.isToday ? 'today' : ''}} {{item.hasRecord ? 'has-record' : ''}} {{item.month !== 'current' ? 'other-month' : ''}}"
+      bindtap="selectDate"
+      data-date="{{item.dateStr}}"
+    >
+      <text class="day-number">{{item.day}}</text>
+      <view class="record-indicators">
+        <view 
+          wx:for="{{getDateRecords(item.dateStr)}}" 
+          wx:key="index"
+          class="indicator {{item.type}}"
+        ></view>
+      </view>
+      <text wx:if="{{item.isToday}}" class="today-label">今</text>
+    </view>
+  </view>
+
+  <!-- 今日记录 -->
+  <view class="today-section">
+    <view class="section-header">
+      <text class="title">今日印记</text>
+      <text class="date">{{todayDate}}</text>
+    </view>
+    
+    <scroll-view class="today-records" scroll-y>
+      <block wx:if="{{todayRecords.length > 0}}">
+        <view 
+          wx:for="{{todayRecords}}" 
+          wx:key="_id" 
+          class="record-item"
+          bindtap="viewRecord"
+          data-id="{{item._id}}"
+        >
+          <view class="record-header">
+            <text class="plant-name">{{item.plantName}}</text>
+            <view class="type-tag {{item.type}}">
+              <text class="type-icon">{{typeIcons[item.type]}}</text>
+              <text class="type-text">{{typeNames[item.type]}}</text>
+            </view>
+          </view>
+          <text class="record-time">{{item.time}}</text>
+          <text wx:if="{{item.description}}" class="record-desc">{{item.description}}</text>
+        </view>
+      </block>
+      <view wx:else class="empty-state">
+        <text class="empty-icon">📝</text>
+        <text class="empty-text">今日暂无记录</text>
+        <button class="add-btn" bindtap="addTodayRecord">添加今日印记</button>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 添加按钮 -->
+  <view class="fab-container">
+    <button class="fab-btn" bindtap="addRecord">
+      <text class="fab-icon">+</text>
+    </button>
+  </view>
+</view>

@@ -1,0 +1,51 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/calendar/calendar",
+    "pages/record/record",
+    "pages/record/addRecord",
+    "pages/record/detail",
+    "pages/community/community",
+    "pages/plantdb/plantdb",
+    "pages/assistant/assistant",
+    "pages/login/login",
+    "pages/register/register"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#9370DB",
+    "navigationBarTitleText": "种下小美好",
+    "navigationBarTextStyle": "white",
+    "backgroundTextStyle": "light",
+    "backgroundColor": "#FAF8F5",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#9370DB",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/community/community",
+        "text": "社区"
+      },
+      {
+        "pagePath": "pages/plantdb/plantdb",
+        "text": "百科"
+      },
+      {
+        "pagePath": "pages/login/login",
+        "text": "登录"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents",
+  "useExtendedLib": {
+    "weui": true
+  }
+}

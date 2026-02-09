@@ -1,0 +1,123 @@
+<!-- pages/assistant/assistant.wxml -->
+<view class="assistant-page">
+  <!-- 顶部导航 -->
+  <view class="header">
+    <view class="back-btn" bindtap="confirmGoBack">
+      <text class="icon">‹</text>
+      <text>返回</text>
+    </view>
+    <text class="title">植物养护助手</text>
+    <view class="clear-btn" bindtap="clearChat">
+      <text>清除</text>
+    </view>
+  </view>
+
+  <!-- 对话区域 -->
+  <scroll-view class="chat-container" scroll-y scroll-with-animation>
+    <view class="chat-messages">
+      <block wx:for="{{messages}}" wx:key="id">
+        <!-- AI消息 -->
+        <view wx:if="{{item.type === 'ai'}}" class="message ai-message">
+          <view class="message-avatar">
+            <text class="avatar-icon">AI</text>
+          </view>
+          <view class="message-content">
+            <view class="message-text">
+              <text>{{item.content}}</text>
+            </view>
+            <view class="message-actions">
+              <text class="time">{{item.time}}</text>
+              <view class="copy-btn" bindtap="copyMessage" data-content="{{item.content}}">
+                <text class="icon">📋</text>
+                <text>复制</text>
+              </view>
+            </view>
+          </view>
+        </view>
+        
+        <!-- 用户消息 -->
+        <view wx:else class="message user-message">
+          <view class="message-content">
+            <view class="message-text">
+              <text>{{item.content}}</text>
+            </view>
+            <view class="message-time">
+              <text class="time">{{item.time}}</text>
+            </view>
+          </view>
+          <view class="message-avatar">
+            <text class="avatar-icon">我</text>
+          </view>
+        </view>
+      </block>
+      
+      <!-- AI思考中 -->
+      <view wx:if="{{isThinking}}" class="message ai-message">
+        <view class="message-avatar">
+          <text class="avatar-icon">AI</text>
+        </view>
+        <view class="message-content">
+          <view class="thinking">
+            <view class="thinking-dots">
+              <view class="thinking-dot"></view>
+              <view class="thinking-dot"></view>
+              <view class="thinking-dot"></view>
+            </view>
+            <text>正在思考...</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 快速提问 -->
+  <view class="quick-questions">
+    <view class="quick-card">
+      <view class="section-title">快速提问</view>
+      <view class="question-tags">
+        <view class="tag" bindtap="quickQuestion" data-question="怎么浇水">
+          <text class="emoji">💧</text>
+          <text class="text">浇水频率</text>
+        </view>
+        <view class="tag" bindtap="quickQuestion" data-question="需要晒太阳吗">
+          <text class="emoji">☀️</text>
+          <text class="text">光照需求</text>
+        </view>
+        <view class="tag" bindtap="quickQuestion" data-question="叶子黄了">
+          <text class="emoji">🍂</text>
+          <text class="text">叶子发黄</text>
+        </view>
+        <view class="tag" bindtap="quickQuestion" data-question="施肥建议">
+          <text class="emoji">🌱</text>
+          <text class="text">如何施肥</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部提示 -->
+  <view class="footer-tips">
+    <text>AI回复仅供参考，请结合实际情况判断</text>
+  </view>
+
+  <!-- 输入区域 -->
+  <view class="input-area">
+    <view class="input-wrapper">
+      <input
+        class="input-field"
+        placeholder="请输入植物养护问题..."
+        value="{{userInput}}"
+        bindinput="onInputChange"
+        bindconfirm="sendMessage"
+        confirm-type="send"
+        focus="{{autoFocus}}"
+      />
+      <view class="quick-send" wx:if="{{userInput}}" bindtap="sendMessage">
+        <text>↵</text>
+      </view>
+    </view>
+    <button class="send-btn" bindtap="sendMessage" disabled="{{!userInput.trim()}}">
+      <text class="icon">↑</text>
+    </button>
+  </view>
+</view>

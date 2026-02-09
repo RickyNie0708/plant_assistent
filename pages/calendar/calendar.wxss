@@ -1,0 +1,376 @@
+/* pages/calendar/calendar.wxss */
+.calendar-page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #FAF8F5 0%, #F5F7FA 100%);
+  padding-bottom: 120rpx;
+}
+
+/* 导航栏 */
+.custom-nav {
+  padding: 80rpx 40rpx 30rpx;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.nav-left .icon {
+  font-size: 36rpx;
+  color: #667eea;
+  margin-right: 16rpx;
+}
+
+.nav-title {
+  font-size: 44rpx;
+  font-weight: 700;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.nav-subtitle {
+  font-size: 24rpx;
+  color: #95A5A6;
+  font-weight: 300;
+  letter-spacing: 1rpx;
+}
+
+/* 月份导航 */
+.month-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40rpx 40rpx;
+}
+
+.nav-btn {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  background: white;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8rpx 32rpx rgba(102, 126, 234, 0.1);
+  transition: all 0.3s ease;
+}
+
+.nav-btn:active {
+  transform: scale(0.9);
+  background: #f8f9fa;
+}
+
+.nav-btn .icon {
+  font-size: 40rpx;
+  color: #667eea;
+  font-weight: 300;
+}
+
+.month-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.year {
+  font-size: 24rpx;
+  color: #95A5A6;
+  margin-bottom: 4rpx;
+}
+
+.month {
+  font-size: 48rpx;
+  font-weight: 700;
+  color: #2C3E50;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* 星期标题 */
+.week-header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  padding: 0 40rpx 20rpx;
+  margin-bottom: 20rpx;
+  border-bottom: 1rpx solid rgba(0, 0, 0, 0.05);
+}
+
+.week-day {
+  text-align: center;
+  font-size: 28rpx;
+  color: #667eea;
+  font-weight: 500;
+  padding: 12rpx 0;
+}
+
+/* 日历网格 */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 12rpx;
+  padding: 0 40rpx 40rpx;
+}
+
+.day-cell {
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-radius: 16rpx;
+  position: relative;
+  transition: all 0.3s ease;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.04);
+}
+
+.day-cell:active {
+  transform: scale(0.95);
+  background: #f8f9fa;
+}
+
+.day-cell.today {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.day-cell.today .day-number {
+  color: white !important;
+  font-weight: 700;
+}
+
+.day-cell.has-record {
+  border: 2rpx solid #667eea;
+}
+
+.day-cell.other-month {
+  opacity: 0.4;
+}
+
+.day-number {
+  font-size: 32rpx;
+  color: #2C3E50;
+  font-weight: 500;
+  margin-bottom: 8rpx;
+}
+
+.today-label {
+  position: absolute;
+  top: 8rpx;
+  right: 8rpx;
+  font-size: 18rpx;
+  color: white;
+  background: #E74C3C;
+  width: 28rpx;
+  height: 28rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 记录指示器 */
+.record-indicators {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4rpx;
+  justify-content: center;
+}
+
+.indicator {
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: 50%;
+}
+
+.indicator.watering {
+  background: #4facfe;
+}
+
+.indicator.fertilizing {
+  background: #43e97b;
+}
+
+.indicator.pruning {
+  background: #fa709a;
+}
+
+.indicator.weeding {
+  background: #ffd166;
+}
+
+/* 今日记录区 */
+.today-section {
+  padding: 0 40rpx;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.section-header .title {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #2C3E50;
+}
+
+.section-header .date {
+  font-size: 24rpx;
+  color: #667eea;
+  font-weight: 500;
+}
+
+.today-records {
+  max-height: 400rpx;
+}
+
+.record-item {
+  background: white;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.record-item:active {
+  transform: translateY(-4rpx);
+  box-shadow: 0 12rpx 40rpx rgba(0, 0, 0, 0.1);
+}
+
+.record-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.plant-name {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #2C3E50;
+}
+
+.type-tag {
+  display: flex;
+  align-items: center;
+  padding: 6rpx 16rpx;
+  border-radius: 20rpx;
+  background: rgba(102, 126, 234, 0.1);
+}
+
+.type-tag.watering {
+  background: rgba(79, 172, 254, 0.1);
+  color: #4facfe;
+}
+
+.type-tag.fertilizing {
+  background: rgba(67, 233, 123, 0.1);
+  color: #43e97b;
+}
+
+.type-tag.pruning {
+  background: rgba(250, 112, 154, 0.1);
+  color: #fa709a;
+}
+
+.type-icon {
+  font-size: 24rpx;
+  margin-right: 8rpx;
+}
+
+.type-text {
+  font-size: 22rpx;
+  font-weight: 500;
+}
+
+.record-time {
+  display: block;
+  font-size: 24rpx;
+  color: #95A5A6;
+  margin-bottom: 12rpx;
+}
+
+.record-desc {
+  display: block;
+  font-size: 26rpx;
+  color: #34495E;
+  line-height: 1.5;
+  padding-top: 12rpx;
+  border-top: 1rpx solid rgba(0, 0, 0, 0.05);
+}
+
+/* 空状态 */
+.empty-state {
+  background: white;
+  border-radius: 20rpx;
+  padding: 60rpx 40rpx;
+  text-align: center;
+  box-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.06);
+}
+
+.empty-icon {
+  font-size: 72rpx;
+  display: block;
+  margin-bottom: 20rpx;
+}
+
+.empty-text {
+  display: block;
+  font-size: 28rpx;
+  color: #95A5A6;
+  margin-bottom: 30rpx;
+}
+
+.add-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 20rpx 40rpx;
+  border-radius: 50rpx;
+  font-size: 26rpx;
+  font-weight: 500;
+  box-shadow: 0 8rpx 32rpx rgba(102, 126, 234, 0.3);
+}
+
+.add-btn:active {
+  transform: scale(0.95);
+}
+
+/* 悬浮按钮 */
+.fab-container {
+  position: fixed;
+  right: 40rpx;
+  bottom: 120rpx;
+}
+
+.fab-btn {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 16rpx 48rpx rgba(102, 126, 234, 0.4);
+  transition: all 0.3s ease;
+}
+
+.fab-btn:active {
+  transform: scale(0.9) rotate(90deg);
+}
+
+.fab-icon {
+  font-size: 48rpx;
+  color: white;
+  font-weight: 300;
+}

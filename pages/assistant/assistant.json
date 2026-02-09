@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "智能助手",
+  "navigationStyle": "custom",
+  "enablePullDownRefresh": false,
+  "backgroundColor": "#FAF8F5",
+  "backgroundTextStyle": "dark",
+  "usingComponents": {}
+}
